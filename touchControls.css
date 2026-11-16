@@ -1,0 +1,65 @@
+/* Fixed, transparent mobile HUD. */
+html.gta-touch-enabled,html.gta-touch-enabled body{overscroll-behavior:none}
+html.gta-touch-enabled body{-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent}
+#gtaTouchOverlay{position:fixed;inset:0;z-index:99999;overflow:hidden;pointer-events:none;touch-action:none;user-select:none;-webkit-user-select:none;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);font-family:system-ui,sans-serif;color:#fff;--idle:.45;--scale:1;opacity:0;visibility:hidden;transition:opacity 150ms ease,visibility 150ms ease}
+#gtaTouchOverlay.active{opacity:1;visibility:visible}
+#gtaTouchOverlay .gta-touch-btn,#gtaTouchOverlay .gta-joystick,#gtaTouchOverlay .gta-hud-tools button,#gtaTouchOverlay .gta-settings,#gtaTouchOverlay .gta-rotate-notice button{pointer-events:auto;touch-action:none}
+#gtaTouchButtons{position:absolute;inset:0;pointer-events:none}
+.gta-touch-btn{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-50%) scale(var(--scale));width:max(44px,var(--width,var(--size)));height:max(44px,var(--height,var(--size)));min-width:44px;min-height:44px;max-width:min(200px,32vmin);max-height:min(200px,32vmin);border:2px solid #fff;border-radius:999px;background:rgba(0,0,0,.35);color:#fff;opacity:var(--idle);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:3px;line-height:1.05;box-shadow:0 2px 9px #0004;font-size:clamp(8px,1vmin,12px);cursor:pointer;transition:opacity 90ms ease,transform 90ms ease,background 90ms ease}
+.gta-touch-btn[hidden]{display:none!important}.gta-icon{font-size:clamp(18px,3vmin,38px);line-height:1;text-shadow:0 1px 4px #000}.gta-label{font-size:clamp(6px,.85vmin,10px);text-align:center;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis;text-shadow:0 1px 3px #000}
+.gta-touch-btn.pressed,.gta-touch-btn.toggled{opacity:.85;transform:translate(-50%,-50%) scale(calc(var(--scale)*.92));background:#ffffff30;box-shadow:0 0 15px #ffffff55}
+.gta-fire{width:min(30vmin,190px);height:min(30vmin,190px);min-width:88px;min-height:88px;border-width:3px}.gta-fire .gta-icon{font-size:clamp(32px,7vmin,76px)}
+.gta-jump{width:min(18vmin,110px);height:min(18vmin,110px)}
+.gta-crouch{width:min(11vmin,110px);height:min(11vmin,110px);left:max(5%,calc(env(safe-area-inset-left) + 5%))}
+.gta-menu{left:max(4%,calc(env(safe-area-inset-left) + 4%));top:max(12%,env(safe-area-inset-top) + 3vmin);width:min(10vmin,100px);height:min(10vmin,100px)}
+.gta-horn,.gta-headlights,.gta-weaponWheel,.gta-phone,.gta-map,.gta-camera,.gta-radio{width:max(44px,var(--width));height:min(var(--size),110px)}
+.gta-previousWeapon,.gta-nextWeapon{width:max(44px,min(9vmin,90px));height:max(58px,min(13vmin,130px))}
+.gta-lookBehind,.gta-special{width:max(44px,min(5vmin,70px));height:max(44px,min(8vmin,90px))}
+.gta-reload,.gta-melee,.gta-enterVehicle{width:max(52px,min(12vmin,100px));height:max(52px,min(12vmin,100px))}
+.gta-melee .gta-icon{font-size:clamp(27px,4.5vmin,46px)}.gta-enterVehicle .gta-icon{font-size:clamp(22px,3.8vmin,36px)}
+.gta-joystick{position:absolute;left:11%;top:70%;transform:translate(-50%,-50%);width:min(32vmin,200px);height:min(32vmin,200px);min-width:100px;min-height:100px;border-radius:50%;opacity:var(--idle)}
+.joy-ring{position:absolute;inset:0;border:2px solid #fff;border-radius:50%;background:rgba(0,0,0,.35);box-shadow:inset 0 0 18px #0005}.joy-knob{position:absolute;left:50%;top:50%;width:40%;height:40%;transform:translate(-50%,-50%);border:2px solid #fff;border-radius:50%;background:#ffffff38;box-shadow:0 0 10px #0008}.joy-caption{position:absolute;bottom:-18%;left:50%;transform:translateX(-50%);font-size:clamp(8px,1vmin,11px);text-shadow:0 1px 3px #000}.gta-joystick.sprinting .joy-knob{background:#a6cf3ab3;border-color:#d2ef6b;box-shadow:0 0 15px #d2ef6b99}
+.gta-hud-tools{position:absolute;left:max(1%,env(safe-area-inset-left));top:max(1%,env(safe-area-inset-top));display:flex;gap:8px;pointer-events:none}.gta-hud-tools button{pointer-events:auto;border:1px solid #ffffff99;border-radius:24px;background:#0009;color:#fff;min-height:44px;padding:7px 12px}.gta-hud-tools #gtaSettingsOpen{display:block}
+.gta-settings{position:absolute;top:max(58px,calc(env(safe-area-inset-top) + 12px));left:max(12px,env(safe-area-inset-left));width:min(310px,88vw);max-height:75vh;overflow:auto;padding:14px;border:1px solid #ffffffaa;border-radius:14px;background:#10110ef2;box-shadow:0 8px 30px #0008;pointer-events:auto}.gta-settings[hidden]{display:none!important}.gta-settings label{display:block;margin:12px 0;font-size:13px}.gta-settings output{float:right}.gta-settings input[type=range]{display:block;width:100%;accent-color:#a6cf3a}.gta-settings label:has(input[type=checkbox]){display:flex;gap:8px;align-items:center}.gta-settings p{font-size:11px;color:#ddd}.settings-close{float:right;background:none;color:#fff;border:0;font-size:23px}
+.gta-rotate-notice{position:absolute;inset:0;display:none;z-index:20;pointer-events:auto;background:#10110e;align-items:center;justify-content:center;flex-direction:column;gap:12px;text-align:center;padding:24px}.gta-rotate-notice.show{display:flex}.rotate-phone{font-size:54px;transform:rotate(90deg)}.gta-rotate-notice strong{font-size:clamp(20px,5vmin,34px)}.gta-rotate-notice span{color:#ddd;max-width:280px}.gta-rotate-notice button{color:#fff;background:#2d3a18;border:1px solid #d2ef6b;border-radius:999px;padding:12px 18px}
+#gtaTouchOverlay.left-handed .gta-joystick{left:89%}#gtaTouchOverlay.left-handed .gta-fire{left:22%}#gtaTouchOverlay.left-handed .gta-jump{left:8%}#gtaTouchOverlay.left-handed .gta-aim{left:8%}#gtaTouchOverlay.left-handed .gta-reload{left:26%}#gtaTouchOverlay.left-handed .gta-melee{left:18%}#gtaTouchOverlay.left-handed .gta-enterVehicle{left:10%}
+/* Desktop remains unaffected because the HUD is inactive unless touch is available. */
+@media(max-width:700px) and (orientation:landscape){.gta-hud-tools #gtaSettingsOpen{display:block}.gta-label{font-size:clamp(6px,.85vmin,9px)}.gta-icon{font-size:clamp(16px,3.4vmin,28px)}}
+@media(prefers-reduced-motion:reduce){#gtaTouchOverlay,.gta-touch-btn{transition:none!important}}
+
+/* Floating-stick hit region is itself a touch control; empty middle/right remains click-through. */
+#gtaJoyFloatZone{position:absolute;left:0;top:40%;width:40%;height:60%;pointer-events:auto;touch-action:none;background:transparent}
+.gta-joystick.floating{z-index:2}
+
+@media(max-width:700px) and (orientation:landscape){.gta-weaponWheel{left:64%}.gta-phone{left:72%}.gta-map{left:80%}.gta-camera{left:88%}.gta-radio{left:96%}.gta-previousWeapon{left:70%}.gta-nextWeapon{left:80%}.gta-lookBehind{left:90%}.gta-special{left:97.5%}}
+
+/* Invisible camera-look surface captures otherwise-empty middle/right touches. */
+#gtaCameraZone{position:absolute;left:25%;right:0;top:0;bottom:0;z-index:1;pointer-events:auto;touch-action:none;background:transparent}
+#gtaTouchButtons{z-index:2}
+.gta-hud-tools{z-index:3}
+.gta-settings{z-index:4}
+
+/* Auto-fit profiles for compact phones and ultrawide displays. */
+#gtaTouchOverlay.compact-layout .gta-touch-btn{padding:2px}
+#gtaTouchOverlay.compact-layout .gta-weaponWheel{left:63%}
+#gtaTouchOverlay.compact-layout .gta-phone{left:72%}
+#gtaTouchOverlay.compact-layout .gta-map{left:81%}
+#gtaTouchOverlay.compact-layout .gta-camera{left:90%}
+#gtaTouchOverlay.compact-layout .gta-radio{left:97%}
+#gtaTouchOverlay.compact-layout .gta-previousWeapon{left:69%}
+#gtaTouchOverlay.compact-layout .gta-nextWeapon{left:80%}
+#gtaTouchOverlay.compact-layout .gta-lookBehind{left:91%}
+#gtaTouchOverlay.compact-layout .gta-special{left:97%}
+#gtaTouchOverlay.ultrawide-layout .gta-joystick{left:max(11%,calc(env(safe-area-inset-left) + 5vmin))}
+#gtaTouchOverlay.ultrawide-layout .gta-fire{left:78%}
+#gtaTouchOverlay.small-landscape .gta-fire{width:min(27vmin,170px);height:min(27vmin,170px)}
+#gtaTouchOverlay.small-landscape .gta-jump{width:min(16vmin,95px);height:min(16vmin,95px)}
+#gtaTouchOverlay.small-landscape .gta-joystick{width:min(29vmin,180px);height:min(29vmin,180px)}
+
+/* Keep the touch HUD strictly inside the game viewport, including fullscreen. */
+#gameStage{position:relative;isolation:isolate;overflow:hidden}
+#gameStage>iframe{z-index:1}
+#gameStage>#gtaTouchOverlay{position:absolute;inset:0;z-index:20;width:100%;height:100%;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+#gameStage:fullscreen>#gtaTouchOverlay{position:absolute;inset:0;width:100%;height:100%}
+#gameStage:fullscreen{width:100vw;height:100dvh;max-height:none;aspect-ratio:auto;overflow:hidden}
+#gameStage:fullscreen #gtaTouchOverlay{font-size:16px}
