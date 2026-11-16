@@ -8,8 +8,8 @@ This repository is a static HTML/CSS/JavaScript site. It has no package manager,
 2. Choose **Create application** → **Pages** → **Connect to Git**.
 3. Connect GitHub and select `developwithAhsan/gta4online`.
 4. Set the production branch to `main`.
-5. Choose **None** as the framework preset (or the equivalent no-framework option).
-6. Set the build command to `exit 0`.
+5. Choose **None** as the framework preset.
+6. Leave the build command blank (there is no build step).
 7. Set the build output directory to `.` (the repository root).
 8. Leave the root directory as `/` and save/deploy.
 

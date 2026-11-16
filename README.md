@@ -17,7 +17,8 @@ See [CLOUDFLARE-DEPLOY.md](./CLOUDFLARE-DEPLOY.md) for the GitHub-connected prod
 
 Recommended settings:
 - Production branch: `main`
-- Build command: `exit 0`
+- Framework preset: `None`
+- Build command: leave blank (no build step is required)
 - Build output directory: `.` (repository root)
 - Root directory: `/`
 
