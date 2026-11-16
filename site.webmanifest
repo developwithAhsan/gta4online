@@ -1,22 +1,9 @@
 {
-  "name": "GTA 5 Online (Web Edition)",
-  "short_name": "GTA 5 Online",
+  "name": "GTA 4 Online Web Edition",
+  "short_name": "GTA 4 Online",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#10110e",
-  "theme_color": "#a6cf3a",
-  "icons": [
-    {
-      "src": "/custom-favicon.png?v=20261009-2",
-      "sizes": "any",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/favicon.svg?v=20261009-2",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any"
-    }
-  ]
+  "background_color": "#0b1017",
+  "theme_color": "#e0a05a",
+  "icons": []
 }
