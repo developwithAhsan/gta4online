@@ -784,3 +784,64 @@ body{background:var(--bg);color:var(--text)}
 .footer .brand{width:clamp(190px,24vw,270px)!important;height:82px!important;}
 .start-emblem{width:min(54%,440px)!important;height:clamp(105px,18vw,190px)!important;margin:0 auto 18px!important;border:0!important;border-radius:0!important;background:url('/assets/gta4-logo.png') center/contain no-repeat!important;box-shadow:none!important;color:transparent!important;font-size:0!important;}
 @media(max-width:560px){.brand{width:160px!important;height:52px!important}.footer .brand{width:190px!important;height:68px!important}.start-emblem{width:min(78%,360px)!important;height:clamp(92px,24vw,145px)!important;margin-bottom:14px!important}}
+
+
+/* GTA IV supplied brand artwork — shared by every page using the site stylesheet. */
+.topbar .brand,
+.footer .brand {
+  width: 116px;
+  height: 70px;
+  min-width: 116px;
+  display: block;
+  flex: 0 0 auto;
+  position: relative;
+}
+.topbar .brand > *,
+.footer .brand > * {
+  display: none !important;
+}
+.topbar .brand::before,
+.footer .brand::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: url("/gta4-logo.png") left center / contain no-repeat;
+}
+.footer .brand {
+  width: 158px;
+  height: 122px;
+  min-width: 158px;
+}
+.game-start-screen .start-emblem {
+  width: clamp(150px, 22vw, 250px);
+  height: auto;
+  aspect-ratio: 2000 / 1538;
+  margin: 0 auto 16px;
+  display: block;
+}
+.game-start-screen .start-emblem img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+}
+@media (max-width: 620px) {
+  .topbar .brand {
+    width: 94px;
+    height: 58px;
+    min-width: 94px;
+  }
+  .footer .brand {
+    width: 140px;
+    height: 108px;
+    min-width: 140px;
+  }
+  .game-start-screen .start-emblem {
+    width: clamp(130px, 42vw, 190px);
+    margin-bottom: 10px;
+  }
+}
