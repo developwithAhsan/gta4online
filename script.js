@@ -58,5 +58,49 @@
   window.addEventListener('resize',updateScroll);
   backToTop?.addEventListener('click',()=>window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}));
   updateScroll();
+  // Accessible, auto-rotating GTA IV gameplay screenshot gallery.
+  const gallery=document.querySelector('.gameplay-carousel');
+  if(gallery){
+    const slides=[...gallery.querySelectorAll('.gameplay-slide')];
+    const dots=[...gallery.querySelectorAll('.gallery-dot')];
+    const counter=gallery.querySelector('.gallery-counter');
+    const pauseButton=gallery.querySelector('.gallery-pause');
+    const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let current=0;
+    let paused=reducedMotion;
+    let timer=null;
+    const showSlide=(next)=>{
+      current=(next+slides.length)%slides.length;
+      slides.forEach((slide,index)=>{
+        const active=index===current;
+        slide.classList.toggle('is-active',active);
+        slide.setAttribute('aria-hidden',String(!active));
+      });
+      dots.forEach((dot,index)=>{
+        const active=index===current;
+        dot.classList.toggle('is-active',active);
+        dot.setAttribute('aria-current',String(active));
+      });
+      if(counter)counter.textContent=String(current+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0');
+    };
+    const stop=()=>{if(timer){window.clearInterval(timer);timer=null;}};
+    const start=()=>{stop();if(!paused)timer=window.setInterval(()=>showSlide(current+1),5000);};
+    gallery.querySelector('.gallery-prev')?.addEventListener('click',()=>{showSlide(current-1);start();});
+    gallery.querySelector('.gallery-next')?.addEventListener('click',()=>{showSlide(current+1);start();});
+    dots.forEach((dot,index)=>dot.addEventListener('click',()=>{showSlide(index);start();}));
+    pauseButton?.addEventListener('click',()=>{
+      paused=!paused;
+      if(pauseButton){pauseButton.textContent=paused?'▶ Play':'Ⅱ Pause';pauseButton.setAttribute('aria-pressed',String(paused));}
+      start();
+    });
+    gallery.addEventListener('mouseenter',stop);
+    gallery.addEventListener('mouseleave',start);
+    gallery.addEventListener('focusin',stop);
+    gallery.addEventListener('focusout',event=>{if(!gallery.contains(event.relatedTarget))start();});
+    document.addEventListener('visibilitychange',()=>document.hidden?stop():start());
+    showSlide(0);
+    if(pauseButton&&reducedMotion){pauseButton.textContent='▶ Play';pauseButton.setAttribute('aria-pressed','true');}
+    start();
+  }
   if(status)status.textContent='GTA IV portal ready · game client not connected';
 })();

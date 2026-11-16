@@ -80,6 +80,40 @@
       </div>
     </section>
 
+    <section class="gameplay-gallery" id="gameplay-gallery" aria-label="GTA IV gameplay screenshots">
+      <div class="gallery-heading">
+        <div><div class="section-label">LIBERTY CITY IN ACTION</div><h2>GTA IV <span>GAMEPLAY GALLERY</span></h2></div>
+        <p>Explore scenes from Liberty City. The screenshots rotate automatically; use the arrows or dots to browse at your own pace.</p>
+      </div>
+      <div class="gameplay-carousel" aria-roledescription="carousel" aria-label="GTA IV gameplay screenshots">
+        <div class="gameplay-slides" aria-live="off">
+          <figure class="gameplay-slide is-active" aria-hidden="false">
+            <img src="/gta4-gameplay-01.jpg" alt="GTA IV street scene with cars in Liberty City" fetchpriority="high">
+            <figcaption><strong>LIBERTY CITY STREETS</strong><span>Explore the city behind the wheel</span></figcaption>
+          </figure>
+          <figure class="gameplay-slide" aria-hidden="true">
+            <img src="/gta4-gameplay-02.jpg" alt="GTA IV motorcycle chase with police on a bridge" loading="lazy">
+            <figcaption><strong>HIGH-SPEED PURSUIT</strong><span>Escape the police across the city</span></figcaption>
+          </figure>
+          <figure class="gameplay-slide" aria-hidden="true">
+            <img src="/gta4-gameplay-03.jpg" alt="GTA IV motorcycle in a busy Liberty City street" loading="lazy">
+            <figcaption><strong>THE CITY NEVER SLEEPS</strong><span>Discover the streets of Liberty City</span></figcaption>
+          </figure>
+        </div>
+        <button class="gallery-arrow gallery-prev" type="button" aria-label="Previous screenshot">‹</button>
+        <button class="gallery-arrow gallery-next" type="button" aria-label="Next screenshot">›</button>
+        <div class="gallery-controls">
+          <div class="gallery-dots" aria-label="Choose screenshot">
+            <button class="gallery-dot is-active" type="button" aria-label="Show screenshot 1" aria-current="true"></button>
+            <button class="gallery-dot" type="button" aria-label="Show screenshot 2" aria-current="false"></button>
+            <button class="gallery-dot" type="button" aria-label="Show screenshot 3" aria-current="false"></button>
+          </div>
+          <span class="gallery-counter" aria-live="polite">01 / 03</span>
+          <button class="gallery-pause" type="button" aria-pressed="false">Ⅱ Pause</button>
+        </div>
+      </div>
+    </section>
+
     <section class="content-section controls-section" id="controls">
       <div class="section-heading"><div><div class="section-label">KEYBOARD & TOUCH GUIDE</div><h2>GTA IV <span>PC CONTROLS</span></h2></div></div>
       <p class="controls-intro">These are the default GTA IV PC keyboard and mouse bindings. You can customize them from the in-game controls menu. The on-screen touch layout mirrors the main movement and action inputs; actual game response needs a compatible client.</p>
@@ -143,7 +177,7 @@
     <p class="footer-disclaimer">Grand Theft Auto and related marks belong to their respective owners. This independent website is not affiliated with Rockstar Games or Take-Two Interactive and does not host game files.</p>
     <div class="footer-bottom"><span>© <span id="year"></span> GTA 4 Online Web Edition</span><span>INDEPENDENT FAN PROJECT</span></div>
   </footer>
-  <script src="/script.js?v=20261116" defer></script>
+  <script src="/script.js?v=20261116-gallery1" defer></script>
   <script src="/touchControls.js?v=20261116" defer></script>
   <script src="/site-language.js" defer></script>
 </body>
