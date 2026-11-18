@@ -1,5 +1,5 @@
 /index.html / 301
 /blog /blog/ 301
-/blog/posts/gta-5-*.html /blog/posts/gta-4-:splat.html 301
 /blog/posts/how-to-play-gta-5-online-in-browser.html /blog/posts/how-to-play-gta-4-online-in-browser.html 301
 /blog/posts/play-gta-5-in-browser.html /blog/posts/play-gta-4-in-browser.html 301
+/blog/posts/gta-5-*.html /blog/posts/gta-4-:splat.html 301
